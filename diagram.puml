@@ -1,0 +1,690 @@
+@startuml
+annotation java.lang.Override
+annotation java.lang.SuppressWarnings
+annotation javax.persistence.Column
+annotation javax.persistence.Entity
+annotation javax.persistence.GeneratedValue
+annotation javax.persistence.Id
+annotation javax.persistence.JoinColumn
+annotation javax.persistence.ManyToOne
+annotation javax.persistence.OneToMany
+annotation javax.persistence.OneToOne
+annotation javax.persistence.Table
+annotation javax.persistence.UniqueConstraint
+annotation javax.servlet.annotation.WebServlet
+annotation javax.validation.constraints.Digits
+annotation javax.validation.constraints.Pattern
+annotation org.hibernate.validator.constraints.Email
+annotation org.hibernate.validator.constraints.NotEmpty
+annotation org.springframework.beans.factory.annotation.Autowired
+annotation org.springframework.beans.factory.annotation.Qualifier
+annotation org.springframework.context.annotation.Bean
+annotation org.springframework.context.annotation.ComponentScan
+annotation org.springframework.context.annotation.Configuration
+annotation org.springframework.context.annotation.Import
+annotation org.springframework.context.annotation.Scope
+annotation org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
+annotation org.springframework.stereotype.Component
+annotation org.springframework.stereotype.Controller
+annotation org.springframework.stereotype.Repository
+annotation org.springframework.stereotype.Service
+annotation org.springframework.transaction.annotation.EnableTransactionManagement
+annotation org.springframework.transaction.annotation.Transactional
+annotation org.springframework.validation.annotation.Validated
+annotation org.springframework.web.bind.annotation.ModelAttribute
+annotation org.springframework.web.bind.annotation.RequestMapping
+annotation org.springframework.web.servlet.config.annotation.EnableWebMvc
+class allegro.configuration.RootConfig
+class allegro.configuration.SecurityConfig
+class allegro.controllers.BasketController
+class allegro.controllers.FilterGeneratorController
+class allegro.controllers.LoginController
+class allegro.controllers.MainSearchController
+class allegro.controllers.PublicPagesController
+class allegro.controllers.RegistrationController
+class allegro.controllers.UserSettingsController
+class allegro.dao.impl.UserDaoImpl
+class allegro.datamodel.ItemInBasket
+class allegro.domain.RootApplicationOptionsEntity
+class allegro.domain.User
+class allegro.domain.UserOptions
+class allegro.domain.UserRole
+class allegro.domain.VerificationToken
+class allegro.dto.ContactFormDTO
+class allegro.dto.RegisterStatusDTO
+class allegro.dto.UserRegistrationDTO
+class allegro.dto.UserSettingsDTO
+class allegro.email.EmailHelper
+class allegro.logic.BasketBean
+class allegro.logic.BuyItemBean
+class allegro.logic.FilterFactoryBean
+class allegro.logic.LoginToAllegroBean
+class allegro.logic.LoginToRemoteBean
+class allegro.logic.PageResultBean
+class allegro.logic.RejectedFiltersCleanerBean
+class allegro.logic.ResultContainerBean
+class allegro.logic.ResultListGeneratorBean
+class allegro.logic.options.ApplicationOptionsBean
+class allegro.logic.options.UserOptionsBean
+class allegro.logic.tasks.SearchTaskType
+class allegro.logic.tasks.TaskManagerBean
+class allegro.logic.tasks.TaskParameters
+class allegro.logic.tasks.TaskResultBean
+class allegro.logic.threads.MonitorThreadBean
+class allegro.logic.threads.SearchGetFiltersListThreadBean
+class allegro.logic.threads.SearchGetListByFilterThreadBean
+class allegro.logic.threads.SearchThreadBean
+class allegro.logic.threads.SoapTimeMonitorBean
+class allegro.registration.ActivationProcess
+class allegro.registration.UserRegister
+class allegro.service.MyUserDetailsService
+class allegro.service.RegisterUserService
+class allegro.service.UserSettingsService
+class allegro.tools.AllegroLinkGenerator
+class allegro.tools.CrossProxyServlet
+class allegro.tools.PasswordHasher
+class allegro.tools.ProviderUtilBean
+class com.sun.xml.ws.fault.ServerSOAPFaultException
+class https.webapi_allegro_pl.service.ArrayOfFilteroptionstype
+class https.webapi_allegro_pl.service.ArrayOfFilterslisttype
+class https.webapi_allegro_pl.service.ArrayOfItemslisttype
+class https.webapi_allegro_pl.service.ArrayOfString
+class https.webapi_allegro_pl.service.CategoriesListType
+class https.webapi_allegro_pl.service.DoBidItemRequest
+class https.webapi_allegro_pl.service.DoBidItemResponse
+class https.webapi_allegro_pl.service.DoGetItemsListRequest
+class https.webapi_allegro_pl.service.DoGetItemsListResponse
+class https.webapi_allegro_pl.service.DoLoginEncResponse
+class https.webapi_allegro_pl.service.DoLoginRequest
+class https.webapi_allegro_pl.service.DoLoginResponse
+class https.webapi_allegro_pl.service.DoQuerySysStatusRequest
+class https.webapi_allegro_pl.service.DoQuerySysStatusResponse
+class https.webapi_allegro_pl.service.FilterOptionsType
+class https.webapi_allegro_pl.service.FiltersListType
+class https.webapi_allegro_pl.service.ItemsListType
+class https.webapi_allegro_pl.service.RangeValueType
+class https.webapi_allegro_pl.service.SearchOptType
+class https.webapi_allegro_pl.service.SellerInfoStruct
+class https.webapi_allegro_pl.service.SortOptionsType
+class https.webapi_allegro_pl.service.UserInfoType
+class java.io.BufferedReader
+class java.io.IOException
+class java.io.InputStreamReader
+class java.io.PrintWriter
+class java.io.UnsupportedEncodingException
+class java.lang.Thread
+class java.net.URL
+class java.net.URLConnection
+class java.security.MessageDigest
+class java.security.NoSuchAlgorithmException
+class java.sql.Date
+class java.sql.Timestamp
+class java.util.ArrayList
+class java.util.Arrays
+class java.util.Base64
+class java.util.Calendar
+class java.util.Collections
+class java.util.Comparator
+class java.util.HashMap
+class java.util.HashSet
+class java.util.Iterator
+class java.util.List
+class java.util.Map
+class java.util.Properties
+class java.util.Set
+class java.util.TreeMap
+class java.util.UUID
+class java.util.logging.Level
+class java.util.logging.Logger
+class javax.annotation.PostConstruct
+class javax.mail.MessagingException
+class javax.mail.internet.MimeMessage
+class javax.persistence.EntityManager
+class javax.persistence.EntityManagerFactory
+class javax.persistence.FetchType
+class javax.persistence.GenerationType
+class javax.persistence.Persistence
+class javax.servlet.ServletException
+class javax.servlet.http.HttpServlet
+class javax.servlet.http.HttpServletRequest
+class javax.servlet.http.HttpServletResponse
+class javax.validation.Valid
+class mvc.model.SearchQueryModel
+class mvc.model.SearchQueryModelAdvanced
+class mvc.model.SearchResultModel
+class org.apache.commons.dbcp2.BasicDataSource
+class org.hibernate.Query
+class org.hibernate.SessionFactory
+class org.springframework.beans.BeansException
+class org.springframework.beans.factory.annotation.Value
+class org.springframework.context.ApplicationContext
+class org.springframework.context.support.ReloadableResourceBundleMessageSource
+class org.springframework.http.HttpRequest
+class org.springframework.mail.javamail.JavaMailSenderImpl
+class org.springframework.mail.javamail.MimeMessageHelper
+class org.springframework.orm.hibernate4.HibernateTransactionManager
+class org.springframework.orm.hibernate4.LocalSessionFactoryBuilder
+class org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder
+class org.springframework.security.config.annotation.web.builders.HttpSecurity
+class org.springframework.security.config.annotation.web.builders.WebSecurity
+class org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter
+class org.springframework.security.core.Authentication
+class org.springframework.security.core.GrantedAuthority
+class org.springframework.security.core.authority.SimpleGrantedAuthority
+class org.springframework.security.core.context.SecurityContextHolder
+class org.springframework.security.core.userdetails.User
+class org.springframework.security.core.userdetails.UserDetails
+class org.springframework.security.core.userdetails.UsernameNotFoundException
+class org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
+class org.springframework.security.crypto.password.PasswordEncoder
+class org.springframework.ui.Model
+class org.springframework.validation.BindingResult
+class org.springframework.validation.Validator
+class org.springframework.web.bind.annotation.RequestMethod
+class org.springframework.web.servlet.ModelAndView
+class org.springframework.web.servlet.view.InternalResourceViewResolver
+class org.springframework.web.servlet.view.JstlView
+interface allegro.dao.api.UserDao
+interface java.io.Serializable
+interface org.springframework.security.core.userdetails.UserDetailsService
+allegro.configuration.RootConfig ..> org.springframework.context.annotation.Bean
+allegro.configuration.RootConfig ..> org.springframework.context.annotation.ComponentScan
+allegro.configuration.RootConfig ..> org.springframework.context.annotation.Configuration
+allegro.configuration.RootConfig ..> org.springframework.context.annotation.Import
+allegro.configuration.RootConfig ..> org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
+allegro.configuration.RootConfig ..> org.springframework.transaction.annotation.EnableTransactionManagement
+allegro.configuration.RootConfig ..> org.springframework.web.servlet.config.annotation.EnableWebMvc
+allegro.configuration.RootConfig ..> java.util.Properties
+allegro.configuration.RootConfig ..> org.apache.commons.dbcp2.BasicDataSource
+allegro.configuration.RootConfig ..> org.hibernate.SessionFactory
+allegro.configuration.RootConfig ..> org.springframework.context.support.ReloadableResourceBundleMessageSource
+allegro.configuration.RootConfig ..> org.springframework.orm.hibernate4.HibernateTransactionManager
+allegro.configuration.RootConfig ..> org.springframework.orm.hibernate4.LocalSessionFactoryBuilder
+allegro.configuration.RootConfig ..> org.springframework.web.servlet.view.InternalResourceViewResolver
+allegro.configuration.RootConfig ..> org.springframework.web.servlet.view.JstlView
+allegro.configuration.SecurityConfig ..> java.lang.Override
+allegro.configuration.SecurityConfig ..> org.springframework.beans.factory.annotation.Autowired
+allegro.configuration.SecurityConfig ..> org.springframework.beans.factory.annotation.Qualifier
+allegro.configuration.SecurityConfig ..> org.springframework.context.annotation.Bean
+allegro.configuration.SecurityConfig ..> org.springframework.context.annotation.Configuration
+allegro.configuration.SecurityConfig ..> org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
+allegro.configuration.SecurityConfig ..> java.util.logging.Logger
+allegro.configuration.SecurityConfig ..> org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder
+allegro.configuration.SecurityConfig ..> org.springframework.security.config.annotation.web.builders.HttpSecurity
+allegro.configuration.SecurityConfig ..> org.springframework.security.config.annotation.web.builders.WebSecurity
+allegro.configuration.SecurityConfig --|> org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter
+allegro.configuration.SecurityConfig ..> org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
+allegro.configuration.SecurityConfig ..> org.springframework.security.crypto.password.PasswordEncoder
+allegro.configuration.SecurityConfig ..> org.springframework.security.core.userdetails.UserDetailsService
+allegro.controllers.BasketController ..> org.springframework.beans.factory.annotation.Autowired
+allegro.controllers.BasketController ..> org.springframework.context.annotation.Scope
+allegro.controllers.BasketController ..> org.springframework.stereotype.Controller
+allegro.controllers.BasketController ..> org.springframework.web.bind.annotation.RequestMapping
+allegro.controllers.BasketController ..> allegro.datamodel.ItemInBasket
+allegro.controllers.BasketController ..> allegro.logic.BasketBean
+allegro.controllers.BasketController ..> java.util.Collections
+allegro.controllers.BasketController ..> java.util.List
+allegro.controllers.BasketController ..> java.util.logging.Logger
+allegro.controllers.BasketController ..> javax.servlet.http.HttpServletRequest
+allegro.controllers.BasketController ..> javax.servlet.http.HttpServletResponse
+allegro.controllers.BasketController ..> org.springframework.security.core.Authentication
+allegro.controllers.BasketController ..> org.springframework.security.core.context.SecurityContextHolder
+allegro.controllers.BasketController ..> org.springframework.web.servlet.ModelAndView
+allegro.controllers.BasketController --|> java.io.Serializable
+allegro.controllers.FilterGeneratorController ..> org.springframework.beans.factory.annotation.Autowired
+allegro.controllers.FilterGeneratorController ..> org.springframework.context.annotation.Scope
+allegro.controllers.FilterGeneratorController ..> org.springframework.stereotype.Controller
+allegro.controllers.FilterGeneratorController ..> org.springframework.web.bind.annotation.RequestMapping
+allegro.controllers.FilterGeneratorController ..> allegro.logic.FilterFactoryBean
+allegro.controllers.FilterGeneratorController ..> allegro.logic.RejectedFiltersCleanerBean
+allegro.controllers.FilterGeneratorController ..> allegro.logic.ResultContainerBean
+allegro.controllers.FilterGeneratorController ..> allegro.logic.options.ApplicationOptionsBean
+allegro.controllers.FilterGeneratorController ..> allegro.logic.tasks.SearchTaskType
+allegro.controllers.FilterGeneratorController ..> allegro.logic.tasks.TaskManagerBean
+allegro.controllers.FilterGeneratorController ..> allegro.logic.tasks.TaskParameters
+allegro.controllers.FilterGeneratorController ..> allegro.logic.threads.SearchThreadBean
+allegro.controllers.FilterGeneratorController ..> https.webapi_allegro_pl.service.ArrayOfFilteroptionstype
+allegro.controllers.FilterGeneratorController ..> https.webapi_allegro_pl.service.SearchOptType
+allegro.controllers.FilterGeneratorController ..> java.util.logging.Logger
+allegro.controllers.FilterGeneratorController ..> javax.servlet.http.HttpServletRequest
+allegro.controllers.FilterGeneratorController ..> javax.servlet.http.HttpServletResponse
+allegro.controllers.FilterGeneratorController ..> org.springframework.web.bind.annotation.RequestMethod
+allegro.controllers.FilterGeneratorController ..> org.springframework.web.servlet.ModelAndView
+allegro.controllers.LoginController ..> org.springframework.context.annotation.Scope
+allegro.controllers.LoginController ..> org.springframework.stereotype.Controller
+allegro.controllers.LoginController ..> org.springframework.web.bind.annotation.RequestMapping
+allegro.controllers.LoginController ..> org.springframework.web.servlet.ModelAndView
+allegro.controllers.LoginController --|> java.io.Serializable
+allegro.controllers.MainSearchController ..> org.springframework.beans.factory.annotation.Autowired
+allegro.controllers.MainSearchController ..> org.springframework.context.annotation.Scope
+allegro.controllers.MainSearchController ..> org.springframework.stereotype.Controller
+allegro.controllers.MainSearchController ..> org.springframework.web.bind.annotation.RequestMapping
+allegro.controllers.MainSearchController ..> allegro.logic.FilterFactoryBean
+allegro.controllers.MainSearchController ..> allegro.logic.LoginToRemoteBean
+allegro.controllers.MainSearchController ..> allegro.logic.PageResultBean
+allegro.controllers.MainSearchController ..> allegro.logic.ResultContainerBean
+allegro.controllers.MainSearchController ..> allegro.logic.ResultListGeneratorBean
+allegro.controllers.MainSearchController ..> allegro.logic.options.ApplicationOptionsBean
+allegro.controllers.MainSearchController ..> allegro.logic.options.UserOptionsBean
+allegro.controllers.MainSearchController ..> allegro.logic.tasks.SearchTaskType
+allegro.controllers.MainSearchController ..> allegro.logic.tasks.TaskManagerBean
+allegro.controllers.MainSearchController ..> allegro.logic.tasks.TaskParameters
+allegro.controllers.MainSearchController ..> allegro.logic.threads.SearchThreadBean
+allegro.controllers.MainSearchController ..> allegro.service.UserSettingsService
+allegro.controllers.MainSearchController ..> allegro.tools.AllegroLinkGenerator
+allegro.controllers.MainSearchController ..> https.webapi_allegro_pl.service.SortOptionsType
+allegro.controllers.MainSearchController ..> java.util.Collections
+allegro.controllers.MainSearchController ..> java.util.List
+allegro.controllers.MainSearchController ..> java.util.logging.Logger
+allegro.controllers.MainSearchController ..> javax.servlet.http.HttpServletRequest
+allegro.controllers.MainSearchController ..> javax.servlet.http.HttpServletResponse
+allegro.controllers.MainSearchController ..> org.springframework.security.core.Authentication
+allegro.controllers.MainSearchController ..> org.springframework.security.core.context.SecurityContextHolder
+allegro.controllers.MainSearchController ..> org.springframework.web.servlet.ModelAndView
+allegro.controllers.PublicPagesController ..> org.springframework.beans.factory.annotation.Autowired
+allegro.controllers.PublicPagesController ..> org.springframework.context.annotation.Scope
+allegro.controllers.PublicPagesController ..> org.springframework.stereotype.Controller
+allegro.controllers.PublicPagesController ..> org.springframework.web.bind.annotation.RequestMapping
+allegro.controllers.PublicPagesController ..> allegro.dto.ContactFormDTO
+allegro.controllers.PublicPagesController ..> allegro.email.EmailHelper
+allegro.controllers.PublicPagesController ..> java.io.UnsupportedEncodingException
+allegro.controllers.PublicPagesController ..> javax.mail.MessagingException
+allegro.controllers.PublicPagesController ..> javax.servlet.http.HttpServletRequest
+allegro.controllers.PublicPagesController ..> javax.servlet.http.HttpServletResponse
+allegro.controllers.PublicPagesController ..> org.springframework.web.servlet.ModelAndView
+allegro.controllers.RegistrationController ..> org.springframework.beans.factory.annotation.Autowired
+allegro.controllers.RegistrationController ..> org.springframework.beans.factory.annotation.Qualifier
+allegro.controllers.RegistrationController ..> org.springframework.context.annotation.Scope
+allegro.controllers.RegistrationController ..> org.springframework.stereotype.Controller
+allegro.controllers.RegistrationController ..> org.springframework.validation.annotation.Validated
+allegro.controllers.RegistrationController ..> org.springframework.web.bind.annotation.ModelAttribute
+allegro.controllers.RegistrationController ..> org.springframework.web.bind.annotation.RequestMapping
+allegro.controllers.RegistrationController ..> allegro.dto.RegisterStatusDTO
+allegro.controllers.RegistrationController ..> allegro.dto.UserRegistrationDTO
+allegro.controllers.RegistrationController ..> allegro.email.EmailHelper
+allegro.controllers.RegistrationController ..> allegro.registration.ActivationProcess
+allegro.controllers.RegistrationController ..> allegro.registration.UserRegister
+allegro.controllers.RegistrationController ..> java.io.UnsupportedEncodingException
+allegro.controllers.RegistrationController ..> java.security.NoSuchAlgorithmException
+allegro.controllers.RegistrationController ..> java.util.Collections
+allegro.controllers.RegistrationController ..> java.util.List
+allegro.controllers.RegistrationController ..> java.util.logging.Logger
+allegro.controllers.RegistrationController ..> javax.mail.MessagingException
+allegro.controllers.RegistrationController ..> javax.servlet.http.HttpServletRequest
+allegro.controllers.RegistrationController ..> javax.validation.Valid
+allegro.controllers.RegistrationController ..> org.springframework.http.HttpRequest
+allegro.controllers.RegistrationController ..> org.springframework.ui.Model
+allegro.controllers.RegistrationController ..> org.springframework.validation.BindingResult
+allegro.controllers.RegistrationController ..> org.springframework.validation.Validator
+allegro.controllers.RegistrationController ..> org.springframework.web.servlet.ModelAndView
+allegro.controllers.UserSettingsController ..> org.springframework.beans.factory.annotation.Autowired
+allegro.controllers.UserSettingsController ..> org.springframework.context.annotation.Scope
+allegro.controllers.UserSettingsController ..> org.springframework.stereotype.Controller
+allegro.controllers.UserSettingsController ..> org.springframework.web.bind.annotation.RequestMapping
+allegro.controllers.UserSettingsController ..> allegro.dto.UserSettingsDTO
+allegro.controllers.UserSettingsController ..> allegro.service.UserSettingsService
+allegro.controllers.UserSettingsController ..> java.util.Collections
+allegro.controllers.UserSettingsController ..> java.util.List
+allegro.controllers.UserSettingsController ..> java.util.logging.Logger
+allegro.controllers.UserSettingsController ..> javax.servlet.http.HttpServletRequest
+allegro.controllers.UserSettingsController ..> org.springframework.security.core.Authentication
+allegro.controllers.UserSettingsController ..> org.springframework.security.core.context.SecurityContextHolder
+allegro.controllers.UserSettingsController ..> org.springframework.web.servlet.ModelAndView
+allegro.dao.impl.UserDaoImpl ..> java.lang.SuppressWarnings
+allegro.dao.impl.UserDaoImpl ..> org.springframework.beans.factory.annotation.Autowired
+allegro.dao.impl.UserDaoImpl ..> org.springframework.stereotype.Repository
+allegro.dao.impl.UserDaoImpl ..> org.springframework.transaction.annotation.Transactional
+allegro.dao.impl.UserDaoImpl ..> allegro.domain.User
+allegro.dao.impl.UserDaoImpl ..> allegro.domain.UserOptions
+allegro.dao.impl.UserDaoImpl ..> allegro.domain.UserRole
+allegro.dao.impl.UserDaoImpl ..> allegro.domain.VerificationToken
+allegro.dao.impl.UserDaoImpl ..> java.util.ArrayList
+allegro.dao.impl.UserDaoImpl ..> java.util.List
+allegro.dao.impl.UserDaoImpl ..> org.hibernate.Query
+allegro.dao.impl.UserDaoImpl ..> org.hibernate.SessionFactory
+allegro.dao.impl.UserDaoImpl --|> allegro.dao.api.UserDao
+allegro.datamodel.ItemInBasket --|> java.io.Serializable
+allegro.domain.User ..> javax.persistence.Column
+allegro.domain.User ..> javax.persistence.Entity
+allegro.domain.User ..> javax.persistence.Id
+allegro.domain.User ..> javax.persistence.OneToMany
+allegro.domain.User ..> javax.persistence.Table
+allegro.domain.User ..> java.util.HashSet
+allegro.domain.User ..> java.util.Set
+allegro.domain.User ..> javax.persistence.FetchType
+allegro.domain.User --|> java.io.Serializable
+allegro.domain.UserOptions ..> javax.persistence.Entity
+allegro.domain.UserOptions ..> javax.persistence.GeneratedValue
+allegro.domain.UserOptions ..> javax.persistence.Id
+allegro.domain.UserOptions ..> javax.persistence.JoinColumn
+allegro.domain.UserOptions ..> javax.persistence.OneToOne
+allegro.domain.UserOptions ..> javax.persistence.FetchType
+allegro.domain.UserOptions ..> javax.persistence.GenerationType
+allegro.domain.UserOptions --|> java.io.Serializable
+allegro.domain.UserRole ..> javax.persistence.Column
+allegro.domain.UserRole ..> javax.persistence.Entity
+allegro.domain.UserRole ..> javax.persistence.GeneratedValue
+allegro.domain.UserRole ..> javax.persistence.Id
+allegro.domain.UserRole ..> javax.persistence.JoinColumn
+allegro.domain.UserRole ..> javax.persistence.ManyToOne
+allegro.domain.UserRole ..> javax.persistence.Table
+allegro.domain.UserRole ..> javax.persistence.UniqueConstraint
+allegro.domain.UserRole ..> javax.persistence.FetchType
+allegro.domain.UserRole ..> javax.persistence.GenerationType
+allegro.domain.VerificationToken ..> javax.persistence.Entity
+allegro.domain.VerificationToken ..> javax.persistence.GeneratedValue
+allegro.domain.VerificationToken ..> javax.persistence.Id
+allegro.domain.VerificationToken ..> javax.persistence.JoinColumn
+allegro.domain.VerificationToken ..> javax.persistence.OneToOne
+allegro.domain.VerificationToken ..> java.sql.Date
+allegro.domain.VerificationToken ..> java.sql.Timestamp
+allegro.domain.VerificationToken ..> java.util.Calendar
+allegro.domain.VerificationToken ..> javax.persistence.FetchType
+allegro.domain.VerificationToken ..> javax.persistence.GenerationType
+allegro.domain.VerificationToken --|> java.io.Serializable
+allegro.dto.UserRegistrationDTO ..> javax.validation.constraints.Digits
+allegro.dto.UserRegistrationDTO ..> javax.validation.constraints.Pattern
+allegro.dto.UserRegistrationDTO ..> org.hibernate.validator.constraints.Email
+allegro.dto.UserRegistrationDTO ..> org.hibernate.validator.constraints.NotEmpty
+allegro.dto.UserSettingsDTO ..> javax.validation.constraints.Digits
+allegro.email.EmailHelper ..> org.springframework.context.annotation.Scope
+allegro.email.EmailHelper ..> org.springframework.stereotype.Service
+allegro.email.EmailHelper ..> java.util.Properties
+allegro.email.EmailHelper ..> javax.mail.MessagingException
+allegro.email.EmailHelper ..> javax.mail.internet.MimeMessage
+allegro.email.EmailHelper ..> org.springframework.mail.javamail.JavaMailSenderImpl
+allegro.email.EmailHelper ..> org.springframework.mail.javamail.MimeMessageHelper
+allegro.logic.BasketBean ..> org.springframework.beans.factory.annotation.Autowired
+allegro.logic.BasketBean ..> org.springframework.context.annotation.Scope
+allegro.logic.BasketBean ..> org.springframework.stereotype.Service
+allegro.logic.BasketBean ..> allegro.controllers.BasketController
+allegro.logic.BasketBean ..> allegro.datamodel.ItemInBasket
+allegro.logic.BasketBean ..> allegro.domain.UserOptions
+allegro.logic.BasketBean ..> allegro.logic.options.ApplicationOptionsBean
+allegro.logic.BasketBean ..> java.util.ArrayList
+allegro.logic.BasketBean ..> java.util.HashMap
+allegro.logic.BasketBean ..> java.util.List
+allegro.logic.BasketBean ..> java.util.Map
+allegro.logic.BasketBean ..> java.util.logging.Logger
+allegro.logic.BasketBean ..> org.springframework.security.core.Authentication
+allegro.logic.BasketBean ..> org.springframework.security.core.context.SecurityContextHolder
+allegro.logic.BasketBean ..> allegro.dao.api.UserDao
+allegro.logic.BasketBean --|> java.io.Serializable
+allegro.logic.BuyItemBean ..> org.springframework.context.annotation.Scope
+allegro.logic.BuyItemBean ..> org.springframework.stereotype.Service
+allegro.logic.BuyItemBean ..> https.webapi_allegro_pl.service.DoBidItemRequest
+allegro.logic.BuyItemBean ..> https.webapi_allegro_pl.service.DoBidItemResponse
+allegro.logic.BuyItemBean ..> java.util.logging.Logger
+allegro.logic.BuyItemBean --|> java.io.Serializable
+allegro.logic.FilterFactoryBean ..> org.springframework.beans.factory.annotation.Autowired
+allegro.logic.FilterFactoryBean ..> org.springframework.context.annotation.Scope
+allegro.logic.FilterFactoryBean ..> org.springframework.stereotype.Service
+allegro.logic.FilterFactoryBean ..> https.webapi_allegro_pl.service.ArrayOfFilteroptionstype
+allegro.logic.FilterFactoryBean ..> https.webapi_allegro_pl.service.ArrayOfString
+allegro.logic.FilterFactoryBean ..> https.webapi_allegro_pl.service.FilterOptionsType
+allegro.logic.FilterFactoryBean ..> https.webapi_allegro_pl.service.RangeValueType
+allegro.logic.FilterFactoryBean ..> java.util.ArrayList
+allegro.logic.FilterFactoryBean ..> java.util.Arrays
+allegro.logic.FilterFactoryBean ..> java.util.Collections
+allegro.logic.FilterFactoryBean ..> java.util.List
+allegro.logic.FilterFactoryBean ..> java.util.logging.Logger
+allegro.logic.FilterFactoryBean ..> javax.servlet.http.HttpServletRequest
+allegro.logic.FilterFactoryBean --|> java.io.Serializable
+allegro.logic.LoginToAllegroBean ..> org.springframework.context.annotation.Scope
+allegro.logic.LoginToAllegroBean ..> org.springframework.stereotype.Service
+allegro.logic.LoginToAllegroBean ..> https.webapi_allegro_pl.service.DoLoginEncResponse
+allegro.logic.LoginToAllegroBean ..> https.webapi_allegro_pl.service.DoLoginRequest
+allegro.logic.LoginToAllegroBean ..> https.webapi_allegro_pl.service.DoLoginResponse
+allegro.logic.LoginToAllegroBean ..> https.webapi_allegro_pl.service.DoQuerySysStatusRequest
+allegro.logic.LoginToAllegroBean ..> https.webapi_allegro_pl.service.DoQuerySysStatusResponse
+allegro.logic.LoginToAllegroBean ..> java.util.logging.Logger
+allegro.logic.LoginToAllegroBean --|> java.io.Serializable
+allegro.logic.LoginToRemoteBean ..> org.springframework.context.annotation.Scope
+allegro.logic.LoginToRemoteBean ..> org.springframework.stereotype.Service
+allegro.logic.LoginToRemoteBean ..> https.webapi_allegro_pl.service.DoLoginEncResponse
+allegro.logic.LoginToRemoteBean ..> https.webapi_allegro_pl.service.DoLoginRequest
+allegro.logic.LoginToRemoteBean ..> https.webapi_allegro_pl.service.DoLoginResponse
+allegro.logic.LoginToRemoteBean ..> https.webapi_allegro_pl.service.DoQuerySysStatusRequest
+allegro.logic.LoginToRemoteBean ..> https.webapi_allegro_pl.service.DoQuerySysStatusResponse
+allegro.logic.LoginToRemoteBean ..> java.util.logging.Logger
+allegro.logic.LoginToRemoteBean ..> javax.annotation.PostConstruct
+allegro.logic.LoginToRemoteBean ..> org.springframework.beans.factory.annotation.Value
+allegro.logic.LoginToRemoteBean --|> java.io.Serializable
+allegro.logic.PageResultBean ..> org.springframework.context.annotation.Scope
+allegro.logic.PageResultBean ..> org.springframework.stereotype.Service
+allegro.logic.PageResultBean ..> https.webapi_allegro_pl.service.ItemsListType
+allegro.logic.PageResultBean ..> java.util.ArrayList
+allegro.logic.PageResultBean ..> java.util.List
+allegro.logic.PageResultBean ..> java.util.Map
+allegro.logic.PageResultBean --|> java.io.Serializable
+allegro.logic.RejectedFiltersCleanerBean ..> org.springframework.beans.factory.annotation.Autowired
+allegro.logic.RejectedFiltersCleanerBean ..> org.springframework.context.annotation.Scope
+allegro.logic.RejectedFiltersCleanerBean ..> org.springframework.stereotype.Service
+allegro.logic.RejectedFiltersCleanerBean ..> allegro.logic.tasks.TaskResultBean
+allegro.logic.RejectedFiltersCleanerBean ..> https.webapi_allegro_pl.service.FiltersListType
+allegro.logic.RejectedFiltersCleanerBean ..> java.util.ArrayList
+allegro.logic.RejectedFiltersCleanerBean ..> java.util.List
+allegro.logic.RejectedFiltersCleanerBean ..> java.util.Map
+allegro.logic.RejectedFiltersCleanerBean ..> java.util.logging.Logger
+allegro.logic.RejectedFiltersCleanerBean --|> java.io.Serializable
+allegro.logic.ResultContainerBean ..> org.springframework.context.annotation.Scope
+allegro.logic.ResultContainerBean ..> org.springframework.stereotype.Service
+allegro.logic.ResultContainerBean ..> allegro.logic.tasks.TaskParameters
+allegro.logic.ResultContainerBean ..> allegro.logic.tasks.TaskResultBean
+allegro.logic.ResultContainerBean ..> java.util.ArrayList
+allegro.logic.ResultContainerBean ..> java.util.HashMap
+allegro.logic.ResultContainerBean ..> java.util.List
+allegro.logic.ResultContainerBean ..> java.util.Map
+allegro.logic.ResultContainerBean --|> java.io.Serializable
+allegro.logic.ResultListGeneratorBean ..> org.springframework.beans.factory.annotation.Autowired
+allegro.logic.ResultListGeneratorBean ..> org.springframework.context.annotation.Scope
+allegro.logic.ResultListGeneratorBean ..> org.springframework.stereotype.Service
+allegro.logic.ResultListGeneratorBean ..> allegro.domain.UserOptions
+allegro.logic.ResultListGeneratorBean ..> allegro.logic.tasks.TaskResultBean
+allegro.logic.ResultListGeneratorBean ..> allegro.service.UserSettingsService
+allegro.logic.ResultListGeneratorBean ..> https.webapi_allegro_pl.service.ArrayOfItemslisttype
+allegro.logic.ResultListGeneratorBean ..> https.webapi_allegro_pl.service.ItemsListType
+allegro.logic.ResultListGeneratorBean ..> https.webapi_allegro_pl.service.UserInfoType
+allegro.logic.ResultListGeneratorBean ..> java.util.ArrayList
+allegro.logic.ResultListGeneratorBean ..> java.util.Comparator
+allegro.logic.ResultListGeneratorBean ..> java.util.HashMap
+allegro.logic.ResultListGeneratorBean ..> java.util.Iterator
+allegro.logic.ResultListGeneratorBean ..> java.util.List
+allegro.logic.ResultListGeneratorBean ..> java.util.Map
+allegro.logic.ResultListGeneratorBean ..> java.util.TreeMap
+allegro.logic.ResultListGeneratorBean ..> java.util.logging.Logger
+allegro.logic.ResultListGeneratorBean ..> allegro.dao.api.UserDao
+allegro.logic.ResultListGeneratorBean --|> java.io.Serializable
+allegro.logic.options.ApplicationOptionsBean ..> org.springframework.context.annotation.Scope
+allegro.logic.options.ApplicationOptionsBean ..> org.springframework.stereotype.Service
+allegro.logic.options.ApplicationOptionsBean --|> java.io.Serializable
+allegro.logic.options.UserOptionsBean ..> org.springframework.context.annotation.Scope
+allegro.logic.options.UserOptionsBean ..> org.springframework.stereotype.Service
+allegro.logic.options.UserOptionsBean --|> java.io.Serializable
+allegro.logic.tasks.TaskManagerBean ..> org.springframework.beans.factory.annotation.Autowired
+allegro.logic.tasks.TaskManagerBean ..> org.springframework.context.annotation.Scope
+allegro.logic.tasks.TaskManagerBean ..> org.springframework.stereotype.Service
+allegro.logic.tasks.TaskManagerBean ..> allegro.logic.ResultContainerBean
+allegro.logic.tasks.TaskManagerBean ..> allegro.logic.threads.SearchGetFiltersListThreadBean
+allegro.logic.tasks.TaskManagerBean ..> allegro.logic.threads.SearchThreadBean
+allegro.logic.tasks.TaskManagerBean ..> allegro.tools.ProviderUtilBean
+allegro.logic.tasks.TaskManagerBean ..> java.util.ArrayList
+allegro.logic.tasks.TaskManagerBean ..> java.util.List
+allegro.logic.tasks.TaskManagerBean ..> java.util.logging.Level
+allegro.logic.tasks.TaskManagerBean ..> java.util.logging.Logger
+allegro.logic.tasks.TaskManagerBean --|> java.io.Serializable
+allegro.logic.tasks.TaskParameters ..> https.webapi_allegro_pl.service.ArrayOfFilteroptionstype
+allegro.logic.tasks.TaskParameters ..> https.webapi_allegro_pl.service.SearchOptType
+allegro.logic.tasks.TaskParameters ..> https.webapi_allegro_pl.service.SellerInfoStruct
+allegro.logic.tasks.TaskParameters ..> https.webapi_allegro_pl.service.SortOptionsType
+allegro.logic.tasks.TaskParameters ..> java.util.ArrayList
+allegro.logic.tasks.TaskParameters ..> java.util.List
+allegro.logic.tasks.TaskParameters --|> java.io.Serializable
+allegro.logic.tasks.TaskResultBean ..> org.springframework.context.annotation.Scope
+allegro.logic.tasks.TaskResultBean ..> org.springframework.stereotype.Component
+allegro.logic.tasks.TaskResultBean ..> https.webapi_allegro_pl.service.ArrayOfFilteroptionstype
+allegro.logic.tasks.TaskResultBean ..> https.webapi_allegro_pl.service.ArrayOfFilterslisttype
+allegro.logic.tasks.TaskResultBean ..> https.webapi_allegro_pl.service.ArrayOfItemslisttype
+allegro.logic.tasks.TaskResultBean ..> https.webapi_allegro_pl.service.ArrayOfString
+allegro.logic.tasks.TaskResultBean ..> https.webapi_allegro_pl.service.CategoriesListType
+allegro.logic.tasks.TaskResultBean ..> java.util.ArrayList
+allegro.logic.tasks.TaskResultBean ..> java.util.List
+allegro.logic.tasks.TaskResultBean --|> java.io.Serializable
+allegro.logic.threads.MonitorThreadBean ..> java.lang.Override
+allegro.logic.threads.MonitorThreadBean ..> org.springframework.beans.factory.annotation.Autowired
+allegro.logic.threads.MonitorThreadBean ..> org.springframework.context.annotation.Scope
+allegro.logic.threads.MonitorThreadBean ..> org.springframework.stereotype.Service
+allegro.logic.threads.MonitorThreadBean --|> java.lang.Thread
+allegro.logic.threads.MonitorThreadBean ..> java.util.logging.Level
+allegro.logic.threads.MonitorThreadBean ..> java.util.logging.Logger
+allegro.logic.threads.SearchGetFiltersListThreadBean ..> java.lang.Override
+allegro.logic.threads.SearchGetFiltersListThreadBean ..> org.springframework.beans.factory.annotation.Autowired
+allegro.logic.threads.SearchGetFiltersListThreadBean ..> org.springframework.context.annotation.Scope
+allegro.logic.threads.SearchGetFiltersListThreadBean ..> org.springframework.stereotype.Service
+allegro.logic.threads.SearchGetFiltersListThreadBean ..> allegro.logic.ResultContainerBean
+allegro.logic.threads.SearchGetFiltersListThreadBean ..> allegro.logic.tasks.TaskResultBean
+allegro.logic.threads.SearchGetFiltersListThreadBean ..> allegro.tools.ProviderUtilBean
+allegro.logic.threads.SearchGetFiltersListThreadBean ..> https.webapi_allegro_pl.service.ArrayOfFilteroptionstype
+allegro.logic.threads.SearchGetFiltersListThreadBean ..> https.webapi_allegro_pl.service.DoGetItemsListRequest
+allegro.logic.threads.SearchGetFiltersListThreadBean ..> https.webapi_allegro_pl.service.DoGetItemsListResponse
+allegro.logic.threads.SearchGetFiltersListThreadBean ..> https.webapi_allegro_pl.service.FilterOptionsType
+allegro.logic.threads.SearchGetFiltersListThreadBean ..> https.webapi_allegro_pl.service.FiltersListType
+allegro.logic.threads.SearchGetFiltersListThreadBean ..> https.webapi_allegro_pl.service.SortOptionsType
+allegro.logic.threads.SearchGetFiltersListThreadBean --|> java.lang.Thread
+allegro.logic.threads.SearchGetFiltersListThreadBean ..> java.util.List
+allegro.logic.threads.SearchGetFiltersListThreadBean ..> java.util.logging.Level
+allegro.logic.threads.SearchGetFiltersListThreadBean ..> java.util.logging.Logger
+allegro.logic.threads.SearchGetListByFilterThreadBean ..> java.lang.Override
+allegro.logic.threads.SearchGetListByFilterThreadBean ..> org.springframework.beans.factory.annotation.Autowired
+allegro.logic.threads.SearchGetListByFilterThreadBean ..> org.springframework.context.annotation.Scope
+allegro.logic.threads.SearchGetListByFilterThreadBean ..> org.springframework.stereotype.Service
+allegro.logic.threads.SearchGetListByFilterThreadBean ..> allegro.logic.ResultContainerBean
+allegro.logic.threads.SearchGetListByFilterThreadBean ..> allegro.logic.tasks.TaskResultBean
+allegro.logic.threads.SearchGetListByFilterThreadBean ..> allegro.tools.ProviderUtilBean
+allegro.logic.threads.SearchGetListByFilterThreadBean ..> https.webapi_allegro_pl.service.ArrayOfFilteroptionstype
+allegro.logic.threads.SearchGetListByFilterThreadBean ..> https.webapi_allegro_pl.service.DoGetItemsListRequest
+allegro.logic.threads.SearchGetListByFilterThreadBean ..> https.webapi_allegro_pl.service.DoGetItemsListResponse
+allegro.logic.threads.SearchGetListByFilterThreadBean ..> https.webapi_allegro_pl.service.FilterOptionsType
+allegro.logic.threads.SearchGetListByFilterThreadBean ..> https.webapi_allegro_pl.service.ItemsListType
+allegro.logic.threads.SearchGetListByFilterThreadBean ..> https.webapi_allegro_pl.service.SortOptionsType
+allegro.logic.threads.SearchGetListByFilterThreadBean --|> java.lang.Thread
+allegro.logic.threads.SearchGetListByFilterThreadBean ..> java.util.logging.Logger
+allegro.logic.threads.SearchThreadBean ..> java.lang.Override
+allegro.logic.threads.SearchThreadBean ..> org.springframework.beans.factory.annotation.Autowired
+allegro.logic.threads.SearchThreadBean ..> org.springframework.context.annotation.Scope
+allegro.logic.threads.SearchThreadBean ..> org.springframework.stereotype.Service
+allegro.logic.threads.SearchThreadBean ..> allegro.logic.ResultContainerBean
+allegro.logic.threads.SearchThreadBean ..> allegro.logic.tasks.TaskParameters
+allegro.logic.threads.SearchThreadBean ..> allegro.logic.tasks.TaskResultBean
+allegro.logic.threads.SearchThreadBean ..> allegro.tools.ProviderUtilBean
+allegro.logic.threads.SearchThreadBean ..> com.sun.xml.ws.fault.ServerSOAPFaultException
+allegro.logic.threads.SearchThreadBean ..> https.webapi_allegro_pl.service.ArrayOfFilteroptionstype
+allegro.logic.threads.SearchThreadBean ..> https.webapi_allegro_pl.service.DoGetItemsListRequest
+allegro.logic.threads.SearchThreadBean ..> https.webapi_allegro_pl.service.DoGetItemsListResponse
+allegro.logic.threads.SearchThreadBean ..> https.webapi_allegro_pl.service.FiltersListType
+allegro.logic.threads.SearchThreadBean ..> https.webapi_allegro_pl.service.SortOptionsType
+allegro.logic.threads.SearchThreadBean ..> java.io.IOException
+allegro.logic.threads.SearchThreadBean --|> java.lang.Thread
+allegro.logic.threads.SearchThreadBean ..> java.util.logging.Level
+allegro.logic.threads.SearchThreadBean ..> java.util.logging.Logger
+allegro.logic.threads.SearchThreadBean --|> java.io.Serializable
+allegro.logic.threads.SoapTimeMonitorBean ..> org.springframework.beans.factory.annotation.Autowired
+allegro.logic.threads.SoapTimeMonitorBean ..> org.springframework.context.annotation.Scope
+allegro.logic.threads.SoapTimeMonitorBean ..> org.springframework.stereotype.Service
+allegro.logic.threads.SoapTimeMonitorBean ..> allegro.tools.ProviderUtilBean
+allegro.logic.threads.SoapTimeMonitorBean ..> java.util.logging.Logger
+allegro.registration.ActivationProcess ..> org.springframework.beans.factory.annotation.Autowired
+allegro.registration.ActivationProcess ..> org.springframework.context.annotation.Scope
+allegro.registration.ActivationProcess ..> org.springframework.stereotype.Service
+allegro.registration.ActivationProcess ..> allegro.domain.User
+allegro.registration.ActivationProcess ..> allegro.domain.VerificationToken
+allegro.registration.ActivationProcess ..> allegro.email.EmailHelper
+allegro.registration.ActivationProcess ..> java.io.UnsupportedEncodingException
+allegro.registration.ActivationProcess ..> java.security.NoSuchAlgorithmException
+allegro.registration.ActivationProcess ..> java.util.Calendar
+allegro.registration.ActivationProcess ..> java.util.UUID
+allegro.registration.ActivationProcess ..> java.util.logging.Logger
+allegro.registration.ActivationProcess ..> javax.mail.MessagingException
+allegro.registration.ActivationProcess ..> allegro.dao.api.UserDao
+allegro.registration.UserRegister ..> org.springframework.beans.factory.annotation.Autowired
+allegro.registration.UserRegister ..> org.springframework.context.annotation.Scope
+allegro.registration.UserRegister ..> org.springframework.stereotype.Service
+allegro.registration.UserRegister ..> allegro.domain.User
+allegro.registration.UserRegister ..> allegro.domain.UserOptions
+allegro.registration.UserRegister ..> allegro.domain.UserRole
+allegro.registration.UserRegister ..> java.io.UnsupportedEncodingException
+allegro.registration.UserRegister ..> java.security.NoSuchAlgorithmException
+allegro.registration.UserRegister ..> javax.mail.MessagingException
+allegro.registration.UserRegister ..> org.springframework.security.crypto.password.PasswordEncoder
+allegro.registration.UserRegister ..> allegro.dao.api.UserDao
+allegro.service.MyUserDetailsService ..> java.lang.Override
+allegro.service.MyUserDetailsService ..> org.springframework.beans.factory.annotation.Autowired
+allegro.service.MyUserDetailsService ..> org.springframework.stereotype.Service
+allegro.service.MyUserDetailsService ..> org.springframework.transaction.annotation.Transactional
+allegro.service.MyUserDetailsService ..> allegro.domain.UserRole
+allegro.service.MyUserDetailsService ..> java.util.ArrayList
+allegro.service.MyUserDetailsService ..> java.util.HashSet
+allegro.service.MyUserDetailsService ..> java.util.List
+allegro.service.MyUserDetailsService ..> java.util.Set
+allegro.service.MyUserDetailsService ..> org.springframework.security.core.GrantedAuthority
+allegro.service.MyUserDetailsService ..> org.springframework.security.core.authority.SimpleGrantedAuthority
+allegro.service.MyUserDetailsService ..> org.springframework.security.core.userdetails.User
+allegro.service.MyUserDetailsService ..> org.springframework.security.core.userdetails.UserDetails
+allegro.service.MyUserDetailsService ..> org.springframework.security.core.userdetails.UsernameNotFoundException
+allegro.service.MyUserDetailsService ..> allegro.dao.api.UserDao
+allegro.service.MyUserDetailsService --|> org.springframework.security.core.userdetails.UserDetailsService
+allegro.service.RegisterUserService ..> org.springframework.context.annotation.Scope
+allegro.service.RegisterUserService ..> org.springframework.stereotype.Service
+allegro.service.RegisterUserService ..> allegro.domain.User
+allegro.service.RegisterUserService ..> allegro.domain.UserRole
+allegro.service.RegisterUserService ..> java.util.HashSet
+allegro.service.RegisterUserService ..> java.util.Set
+allegro.service.RegisterUserService ..> javax.persistence.EntityManager
+allegro.service.RegisterUserService ..> javax.persistence.EntityManagerFactory
+allegro.service.RegisterUserService ..> javax.persistence.Persistence
+allegro.service.UserSettingsService ..> org.springframework.beans.factory.annotation.Autowired
+allegro.service.UserSettingsService ..> org.springframework.context.annotation.Scope
+allegro.service.UserSettingsService ..> org.springframework.stereotype.Service
+allegro.service.UserSettingsService ..> allegro.domain.UserOptions
+allegro.service.UserSettingsService ..> allegro.dto.UserSettingsDTO
+allegro.service.UserSettingsService ..> allegro.logic.LoginToAllegroBean
+allegro.service.UserSettingsService ..> com.sun.xml.ws.fault.ServerSOAPFaultException
+allegro.service.UserSettingsService ..> java.util.logging.Logger
+allegro.service.UserSettingsService ..> org.springframework.security.core.Authentication
+allegro.service.UserSettingsService ..> org.springframework.security.core.context.SecurityContextHolder
+allegro.service.UserSettingsService ..> org.springframework.security.crypto.password.PasswordEncoder
+allegro.service.UserSettingsService ..> allegro.dao.api.UserDao
+allegro.tools.AllegroLinkGenerator ..> org.springframework.context.annotation.Scope
+allegro.tools.AllegroLinkGenerator ..> org.springframework.stereotype.Service
+allegro.tools.CrossProxyServlet ..> java.lang.Override
+allegro.tools.CrossProxyServlet ..> javax.servlet.annotation.WebServlet
+allegro.tools.CrossProxyServlet ..> java.io.BufferedReader
+allegro.tools.CrossProxyServlet ..> java.io.IOException
+allegro.tools.CrossProxyServlet ..> java.io.InputStreamReader
+allegro.tools.CrossProxyServlet ..> java.io.PrintWriter
+allegro.tools.CrossProxyServlet ..> java.net.URL
+allegro.tools.CrossProxyServlet ..> java.net.URLConnection
+allegro.tools.CrossProxyServlet ..> javax.servlet.ServletException
+allegro.tools.CrossProxyServlet --|> javax.servlet.http.HttpServlet
+allegro.tools.CrossProxyServlet ..> javax.servlet.http.HttpServletRequest
+allegro.tools.CrossProxyServlet ..> javax.servlet.http.HttpServletResponse
+allegro.tools.PasswordHasher ..> org.springframework.context.annotation.Scope
+allegro.tools.PasswordHasher ..> org.springframework.stereotype.Service
+allegro.tools.PasswordHasher ..> java.io.UnsupportedEncodingException
+allegro.tools.PasswordHasher ..> java.security.MessageDigest
+allegro.tools.PasswordHasher ..> java.security.NoSuchAlgorithmException
+allegro.tools.PasswordHasher ..> java.util.Base64
+allegro.tools.ProviderUtilBean ..> org.springframework.beans.factory.annotation.Autowired
+allegro.tools.ProviderUtilBean ..> org.springframework.stereotype.Component
+allegro.tools.ProviderUtilBean ..> java.util.Map
+allegro.tools.ProviderUtilBean ..> org.springframework.beans.BeansException
+allegro.tools.ProviderUtilBean ..> org.springframework.context.ApplicationContext
+allegro.tools.ProviderUtilBean --|> java.io.Serializable
+mvc.model.SearchQueryModel ..> java.lang.Override
+mvc.model.SearchQueryModelAdvanced ..> java.lang.Override
+mvc.model.SearchResultModel ..> java.lang.Override
+allegro.dao.api.UserDao ..> allegro.domain.User
+allegro.dao.api.UserDao ..> allegro.domain.UserOptions
+allegro.dao.api.UserDao ..> allegro.domain.UserRole
+allegro.dao.api.UserDao ..> allegro.domain.VerificationToken
+@enduml
